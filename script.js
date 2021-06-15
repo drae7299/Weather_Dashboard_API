@@ -91,6 +91,15 @@ function renderCurrentWeather(city, weather) {
 
   todayContainer.innerHTML = '';
   todayContainer.append(card);
+}
+function renderForecastCard(forecast) {
+    // variables for data from api
+    var unixTs = forecast.dt;
+    var iconUrl = `https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
+    var iconDescription = forecast.weather[0].description;
+    var tempF = forecast.temp.day;
+    var { humidity } = forecast;
+    var windMph = forecast.wind_speed;
 
 
 //fuction to render history 
