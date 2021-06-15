@@ -75,7 +75,8 @@ function renderCurrentWeather(city, weather) {
   windEl.textContent = `Wind: ${windMph} MPH`;
   humidityEl.textContent = `Humidity: ${humidity} %`;
   cardBody.append(heading, tempEl, windEl, humidityEl);
-
+  uvEl.textContent = 'UV Index: ';
+  uviBadge.classList.add('btn', 'btn-sm');
 
 
 //fuction to render history 
