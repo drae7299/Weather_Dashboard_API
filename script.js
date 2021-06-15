@@ -43,7 +43,14 @@ function appendToHistory(search) {
 function renderCurrentWeather(city, weather) {
     var date = dayjs().format('M/D/YYYY');
     //create vars for required functionality
-    
+    var tempF = weather.temp;
+  var windMph = weather.wind_speed;
+  var humidity = weather.humidity;
+  var uvi = weather.uvi;
+  var iconUrl = `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
+  var iconDescription = weather.weather[0].description || weather[0].main;
+
+
 //fuction to render history 
 //function to put fetch data on the page
 
