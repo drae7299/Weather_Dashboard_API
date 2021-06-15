@@ -100,6 +100,14 @@ function renderForecastCard(forecast) {
     var tempF = forecast.temp.day;
     var { humidity } = forecast;
     var windMph = forecast.wind_speed;
+    var col = document.createElement('div');
+    var card = document.createElement('div');
+    var cardBody = document.createElement('div');
+    var cardTitle = document.createElement('h5');
+    var weatherIcon = document.createElement('img');
+    var tempEl = document.createElement('p');
+    var windEl = document.createElement('p');
+    var humidityEl = document.createElement('p');
 
 
 //fuction to render history 
