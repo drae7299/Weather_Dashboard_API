@@ -121,6 +121,12 @@ function renderForecastCard(forecast) {
   tempEl.setAttribute('class', 'card-text');
   windEl.setAttribute('class', 'card-text');
   humidityEl.setAttribute('class', 'card-text');
+  cardTitle.textContent = dayjs.unix(unixTs).format('M/D/YYYY');
+  weatherIcon.setAttribute('src', iconUrl);
+  weatherIcon.setAttribute('alt', iconDescription);
+  tempEl.textContent = `Temp: ${tempF} °F`;
+  windEl.textContent = `Wind: ${windMph} MPH`;
+  humidityEl.textContent = `Humidity: ${humidity} %`;
 
 
 //fuction to render history 
