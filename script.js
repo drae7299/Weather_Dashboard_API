@@ -24,6 +24,26 @@ function populateUserHistory() {
         btn.textContent = searchHistory[i];
         searchHistoryContainer.append(btn);
 } 
+}
+//creating the append function for the handler to use for logic
+function appendToHistory(search) {
+    //if there is not search input basically, return nothing i think?
+    if (serchHistory.indexOf(search) !== -1) {
+        return;
+    }
+    //push search up
+    searchHistory.push(search);
+    //take local storage data and stringify the json data from search History
+    localStorage.setItem('search-history', JSON.stringify(searchHistory));
+    //render history now but calling the function 
+    renderSearchHistory();
+}
+
+//function for the accurate displayed time and date
+function renderCurrentWeather(city, weather) {
+    var date = dayjs().format('M/D/YYYY');
+    //create vars for required functionality
+    
 //fuction to render history 
 //function to put fetch data on the page
 
