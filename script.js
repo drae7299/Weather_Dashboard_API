@@ -77,6 +77,20 @@ function renderCurrentWeather(city, weather) {
   cardBody.append(heading, tempEl, windEl, humidityEl);
   uvEl.textContent = 'UV Index: ';
   uviBadge.classList.add('btn', 'btn-sm');
+  if (uvi < 3) {
+    uviBadge.classList.add('btn-success');
+  } else if (uvi < 7) {
+    uviBadge.classList.add('btn-warning');
+  } else {
+    uviBadge.classList.add('btn-danger');
+  }
+
+  uviBadge.textContent = uvi;
+  uvEl.append(uviBadge);
+  cardBody.append(uvEl);
+
+  todayContainer.innerHTML = '';
+  todayContainer.append(card);
 
 
 //fuction to render history 
