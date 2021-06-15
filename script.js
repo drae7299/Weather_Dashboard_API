@@ -58,6 +58,14 @@ function renderCurrentWeather(city, weather) {
   var humidityEl = document.createElement('p');
   var uvEl = document.createElement('p');
   var uviBadge = document.createElement('button');
+  card.setAttribute('class', 'card');
+  cardBody.setAttribute('class', 'card-body');
+  card.append(cardBody);
+
+  heading.setAttribute('class', 'h3 card-title');
+  tempEl.setAttribute('class', 'card-text');
+  windEl.setAttribute('class', 'card-text');
+  humidityEl.setAttribute('class', 'card-text');
 
 
 
