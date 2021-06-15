@@ -49,6 +49,16 @@ function renderCurrentWeather(city, weather) {
   var uvi = weather.uvi;
   var iconUrl = `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
   var iconDescription = weather.weather[0].description || weather[0].main;
+  var card = document.createElement('div');
+  var cardBody = document.createElement('div');
+  var heading = document.createElement('h2');
+  var weatherIcon = document.createElement('img');
+  var tempEl = document.createElement('p');
+  var windEl = document.createElement('p');
+  var humidityEl = document.createElement('p');
+  var uvEl = document.createElement('p');
+  var uviBadge = document.createElement('button');
+
 
 
 //fuction to render history 
