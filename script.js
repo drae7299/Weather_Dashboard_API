@@ -210,6 +210,16 @@ function fetchCoords(search) {
     if (!e.target.matches('.btn-history')) {
       return;
     }
+    var btn = e.target;
+    var search = btn.getAttribute('data-search');
+    fetchCoords(search);
+  }
+
+  //initiate the application on click to finish!
+  initSearchHistory();
+searchForm.addEventListener('submit', handleSearchFormSubmit);
+searchHistoryContainer.addEventListener('click', handleSearchHistoryClick);
+
 //fuction to render history 
 //function to put fetch data on the page
 
