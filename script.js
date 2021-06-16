@@ -127,8 +127,78 @@ function renderForecastCard(forecast) {
   tempEl.textContent = `Temp: ${tempF} °F`;
   windEl.textContent = `Wind: ${windMph} MPH`;
   humidityEl.textContent = `Humidity: ${humidity} %`;
+//calling the function to append the forcast in the col via innnerhtml
+  forecastContainer.append(col)
+}
 
+//creating a loop to give the full 5 day forecast and to append them 
+function renderForecast(dailyForecast) {
+    var startDt = dayjs().add(1, 'day').startOf('day').unix();
+    var endDt = dayjs().add(6, 'day').startOf('day').unix();
+    var headingCol = document.createElement('div');
+    var heading = document.createElement('h4');
+    headingCol.setAttribute('class', 'col-12');
+    heading.textContent = '5-Day Forecast:';
+    headingCol.append(heading);
+    forecastContainer.innerHTML = '';
+  forecastContainer.append(headingCol);
+  for (var i = 0; i < dailyForecast.length; i++) {
+    if (dailyForecast[i].dt >= startDt && dailyForecast[i].dt < endDt) {
+        renderForecastCard(dailyForecast[i]);
+      }
+    }
+  }
+  //function to render all datat for the city date etc...
+  function renderItems(city, data) {
+    renderCurrentWeather(city, data.current);
+    renderForecast(data.daily);
+  }
+//fetch request to the api via geo location 
+  function fetchWeather(location) {
+    var { lat } = location;
+    var { lon } = location;
+    var city = location.name;
+    var apiUrl = `${weatherApiRootUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${weatherApiKey}`;
+  
+    fetch(apiUrl)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      renderItems(city, data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+}
 
+//function to fetch the cooridinates
+function fetchCoords(search) {
+    var apiUrl = `${weatherApiRootUrl}/geo/1.0/direct?q=${search}&limit=5&appid=${weatherApiKey}`;
+  
+    fetch(apiUrl)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        if (!data[0]) {
+          alert('Location not found');
+        } else {
+          appendToHistory(search);
+          fetchWeather(data[0]);
+        }
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+  }
+
+  //created a function to handle the form submit
+  function handleSearchFormSubmit(e) {
+    // Don't continue if there is nothing in the search form
+    if (!searchInput.value) {
+      return;
+    }
 //fuction to render history 
 //function to put fetch data on the page
 
