@@ -199,6 +199,17 @@ function fetchCoords(search) {
     if (!searchInput.value) {
       return;
     }
+    e.preventDefault();
+    var search = searchInput.value.trim();
+    fetchCoords(search);
+    searchInput.value = '';
+  }
+  //created a on click funtion for the event
+  function handleSearchHistoryClick(e) {
+    
+    if (!e.target.matches('.btn-history')) {
+      return;
+    }
 //fuction to render history 
 //function to put fetch data on the page
 
