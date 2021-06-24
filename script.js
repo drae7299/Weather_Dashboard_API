@@ -11,12 +11,18 @@ var forecastContainer = document.querySelector("#forecast");
 var searchHistoryContainer = document.querySelector("#history");
 
 //event listerner on submit
- //loop through recent search to give most recent
-  //also added in the ability for the on click button to access the container to append into the innner html
-function renderUserHistory() {
-  searchHistoryContainer.innerHTML = '';
- 
- 
+//loop through recent search to give most recent
+//also added in the ability for the on click button to access the container to append into the innner html
+//creating the append function for the handler to use for logic
+//if there is not search input basically, return nothing i think?
+//push search up
+//take local storage data and stringify the json data from search History
+//render history now but calling the function
+//function for the accurate displayed time and date
+// Function to display the search history list.
+function renderSearchHistory() {
+  searchHistoryContainer.innerHTML = "";
+
   for (var i = searchHistory.length - 1; i >= 0; i--) {
     var btn = document.createElement("button");
     btn.setAttribute("type", "button");
@@ -28,30 +34,23 @@ function renderUserHistory() {
   }
 }
 
-//creating the append function for the handler to use for logic
 function appendToHistory(search) {
-  //if there is not search input basically, return nothing i think?
   if (searchHistory.indexOf(search) !== -1) {
     return;
   }
-  //push search up
   searchHistory.push(search);
-  //take local storage data and stringify the json data from search History
-  localStorage.setItem('search-history', JSON.stringify(searchHistory));
-  //render history now but calling the function
+
+  localStorage.setItem("search-history", JSON.stringify(searchHistory));
   renderSearchHistory();
 }
 
 function initSearchHistory() {
-    var storedHistory = localStorage.getItem('search-history');
-    if (storedHistory) {
-      searchHistory = JSON.parse(storedHistory);
-    }
-    renderSearchHistory();
+  var storedHistory = localStorage.getItem("search-history");
+  if (storedHistory) {
+    searchHistory = JSON.parse(storedHistory);
   }
-
-//function for the accurate displayed time and date
-
+  renderSearchHistory();
+}
 function renderCurrentWeather(city, weather) {
   var date = dayjs().format("M/D/YYYY");
   //create vars for required functionality

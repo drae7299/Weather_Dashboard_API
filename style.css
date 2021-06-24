@@ -6,6 +6,7 @@
   
   body {
     margin: 0;
+    background-color: lightgray;
   }
   
   main {
@@ -46,10 +47,7 @@
   small {
     font-size: 80%;
   }
-  sub,
-  sup {
-  }
-  
+
   sub {
     bottom: -0.25em;
   }
@@ -1564,9 +1562,9 @@
   }
   
   .weather-header {
-    background: #20084a;
-    background: -webkit-linear-gradient(right, #20084a, #3463bc);
-    background: -moz-linear-gradient(right, #20084a, #3463bc);
-    background: linear-gradient(to left, #20084a, #3463bc);
+    background: #cc7c13;
+    background: -webkit-linear-gradient(right, #cc7c13, #3463bc);
+    background: -moz-linear-gradient(right, #cc7c13, #3463bc);
+    background: linear-gradient(to left, #cc7c13, #3463bc);
   }
   
